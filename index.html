@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Biblioteca</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>📚 Mi <span>Biblioteca</span></h1>
+    <button id="theme" title="Cambiar tema">🌓 Tema</button>
+  </header>
+
+  <section class="stats">
+    <div class="card stat"><small>Títulos</small><b id="sTit">0</b></div>
+    <div class="card stat"><small>Ejemplares disponibles</small><b class="g" id="sDis">0</b></div>
+    <div class="card stat"><small>Préstamos activos</small><b id="sAct">0</b></div>
+    <div class="card stat"><small>Vencidos</small><b class="r" id="sVen">0</b></div>
+  </section>
+
+  <nav class="tabs" id="tabs">
+    <button data-tab="books" class="on">📖 Libros</button>
+    <button data-tab="members">👥 Socios</button>
+    <button data-tab="loans">🔄 Préstamos</button>
+  </nav>
+
+  <!-- LIBROS -->
+  <div class="grid" id="tab-books">
+    <div class="card">
+      <h2 id="bTitle">Nuevo libro</h2>
+      <label for="bName">Título</label><input id="bName" maxlength="80">
+      <label for="bAuthor">Autor</label><input id="bAuthor" maxlength="60">
+      <label for="bGenre">Género</label>
+      <select id="bGenre"><option>Novela</option><option>Cuento</option><option>Ciencia</option><option>Historia</option><option>Tecnología</option><option>Infantil</option><option>Otro</option></select>
+      <label for="bCopies">Ejemplares</label><input id="bCopies" type="number" min="1" value="1">
+      <button class="btn" id="bSave">Agregar libro</button>
+      <button class="btn s" id="bCancel" hidden>Cancelar edición</button>
+    </div>
+    <div class="card"><h2>Catálogo</h2><input id="bQ" placeholder="🔍 Buscar por título, autor o género…"><div id="bList"></div></div>
+  </div>
+
+  <!-- SOCIOS -->
+  <div class="grid" id="tab-members" hidden>
+    <div class="card">
+      <h2 id="mTitle">Nuevo socio</h2>
+      <label for="mName">Nombre</label><input id="mName" maxlength="60">
+      <label for="mDoc">Documento</label><input id="mDoc" maxlength="20">
+      <label for="mPhone">Teléfono</label><input id="mPhone" maxlength="20" inputmode="tel">
+      <button class="btn" id="mSave">Agregar socio</button>
+      <button class="btn s" id="mCancel" hidden>Cancelar edición</button>
+    </div>
+    <div class="card"><h2>Socios</h2><input id="mQ" placeholder="🔍 Buscar por nombre o documento…"><div id="mList"></div></div>
+  </div>
+
+  <!-- PRESTAMOS -->
+  <div class="grid" id="tab-loans" hidden>
+    <div class="card">
+      <h2>Nuevo préstamo</h2>
+      <label for="lBook">Libro (disponibles)</label><select id="lBook"></select>
+      <label for="lMember">Socio</label><select id="lMember"></select>
+      <label for="lDays">Días de préstamo</label><input id="lDays" type="number" min="1" max="60" value="7">
+      <button class="btn" id="lSave">Registrar préstamo</button>
+    </div>
+    <div class="card">
+      <h2>Préstamos</h2>
+      <select id="lFilter"><option value="all">Todos</option><option value="active">Activos</option><option value="late">Vencidos</option><option value="done">Devueltos</option></select>
+      <div id="lList"></div>
+    </div>
+  </div>
+
+  <button class="btn s clear" id="clear">Borrar todos los datos</button>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
